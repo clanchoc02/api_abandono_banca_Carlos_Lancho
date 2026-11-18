@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluador de Riesgo de Abandono - Banca</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestor de Riesgo de Fuga</h1>
+            <p>Introduce los datos del cliente para evaluar su probabilidad de abandono y obtener una directriz comercial.</p>
+        </header>
+
+        <main class="grid-layout">
+            <!-- Formulario de Entrada -->
+            <form id="churn-form" class="card">
+                <h2>Datos del Cliente</h2>
+                
+                <div class="form-group">
+                    <label for="id_cliente">ID Cliente:</label>
+                    <input type="text" id="id_cliente" value="CLI-9999" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" step="1" value="42" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="num_productos">Nº Productos:</label>
+                        <input type="number" id="num_productos" min="1" max="10" value="2" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ingresos_anuales">Ingresos Anuales (€):</label>
+                        <input type="number" id="ingresos_anuales" step="0.01" value="48000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="saldo_cuenta">Saldo en Cuenta (€):</label>
+                        <input type="number" id="saldo_cuenta" step="0.01" value="14200" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="antiguedad_meses">Antigüedad (meses):</label>
+                        <input type="number" id="antiguedad_meses" value="60" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tiene_tarjeta">¿Tiene Tarjeta?</label>
+                        <select id="tiene_tarjeta">
+                            <option value="1" selected>Sí (1)</option>
+                            <option value="0">No (0)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tipo_cuenta">Tipo de Cuenta:</label>
+                        <select id="tipo_cuenta">
+                            <option value="Ahorro" selected>Ahorro</option>
+                            <option value="Corriente">Corriente</option>
+                            <option value="Nomina">Nómina</option>
+                            <option value="Inversion">Inversión</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="canal_preferido">Canal Preferido:</label>
+                        <select id="canal_preferido">
+                            <option value="App Movil" selected>App Móvil</option>
+                            <option value="Web">Web</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Telefono">Teléfono</option>
+                            <option value="Cajero Antiguo">Cajero Antiguo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nivel_estudios">Nivel de Estudios:</label>
+                        <select id="nivel_estudios">
+                            <option value="Primaria">Primaria</option>
+                            <option value="Secundaria">Secundaria</option>
+                            <option value="Grado" selected>Grado</option>
+                            <option value="Master">Máster</option>
+                            <option value="Doctorado">Doctorado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nivel_satisfaccion">Nivel de Satisfacción:</label>
+                        <select id="nivel_satisfaccion">
+                            <option value="Muy Bajo">Muy Bajo</option>
+                            <option value="Bajo">Bajo</option>
+                            <option value="Medio">Medio</option>
+                            <option value="Alto" selected>Alto</option>
+                            <option value="Muy Alto">Muy Alto</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="btn-submit">Evaluar Riesgo de Fuga</button>
+            </form>
+
+            <!-- Panel de Resultados -->
+            <div class="card result-card">
+                <h2>Resultado de la Evaluación</h2>
+                <div id="placeholder-result" class="placeholder">
+                    <p>Completa el formulario y pulsa el botón para ver la predicción del modelo.</p>
+                </div>
+                
+                <div id="result-content" class="hidden">
+                    <div class="metric-box">
+                        <span class="label">ID Analizado:</span>
+                        <span id="res-id" class="value">-</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="label">Predicción de Abandono:</span>
+                        <span id="res-abandono" class="value badge">-</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="label">Probabilidad de Fuga:</span>
+                        <span id="res-prob" class="value">-</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="label">Nivel de Riesgo:</span>
+                        <span id="res-riesgo" class="value badge-risk">-</span>
+                    </div>
+                    <div class="action-box">
+                        <h3>Acción Comercial Recomendada:</h3>
+                        <p id="res-accion">-</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
